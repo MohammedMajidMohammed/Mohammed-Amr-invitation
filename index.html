@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة عقد قران محمد ومريم</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;900&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;500;700&family=Reem+Kufi:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="02_Al_Leila.mp3" type="audio/mp3">
+        <source src="music.mp3" type="audio/mp3">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/2/23/OUD.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- 3D Envelope Opening Screen -->
+    <div id="envelope-container">
+        <div class="light-flare"></div>
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-back"></div>
+                <!-- The Letter inside the envelope -->
+                <div class="letter-preview">
+                    <div class="letter-monogram">M & M</div>
+                    <div class="letter-teaser">حفل عقد قران</div>
+                </div>
+                <div class="envelope-front"></div>
+                <div class="envelope-top-flap" id="envelope-flap"></div>
+                <!-- Monogrammed Gold Wax Seal -->
+                <div class="wax-seal" id="wax-seal">
+                    <div class="wax-seal-inner">
+                        <span class="seal-letters">M&M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="envelope-instruction">
+            <i class="fa-solid fa-fingerprint seal-pulse-icon"></i>
+            <span>انقر على الختم الذهبي لفتح الدعوة</span>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden Initially) -->
+    <div id="main-content" class="hidden">
+        <!-- Floating Controls -->
+        <div class="floating-controls">
+            <button id="music-toggle-btn" class="control-btn playing" title="تشغيل/إيقاف الموسيقى">
+                <i class="fa-solid fa-music"></i>
+                <div class="music-wave">
+                    <span></span><span></span><span></span>
+                </div>
+            </button>
+            <button id="whatsapp-share-btn" class="control-btn" title="مشاركة الدعوة">
+                <i class="fa-brands fa-whatsapp"></i>
+            </button>
+        </div>
+
+        <!-- Canvas for Falling Gold Dust and Petals -->
+        <canvas id="petals-canvas"></canvas>
+
+        <!-- Decorative Interactive Corner Leaves -->
+        <div class="parallax-leaf leaf-top-right">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+                <path d="M200,0 Q120,40 100,100 Q80,120 0,150" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>
+                <!-- Foliage detailing -->
+                <path d="M200,0 C170,20 160,50 170,60 C180,70 190,50 200,0 Z" fill="url(#goldGrad)" opacity="0.8"/>
+                <path d="M165,35 C135,50 120,80 130,90 C140,100 155,75 165,35 Z" fill="url(#goldGrad)" opacity="0.7"/>
+                <path d="M130,70 C100,85 85,115 95,125 C105,135 120,110 130,70 Z" fill="url(#goldGrad)" opacity="0.8"/>
+                <path d="M100,100 C70,115 55,145 65,155 C75,165 90,140 100,100 Z" fill="url(#goldGrad)" opacity="0.6"/>
+                <path d="M180,15 C160,10 140,25 145,35 C150,45 170,30 180,15 Z" fill="url(#goldGrad)" opacity="0.75"/>
+                <path d="M145,50 C125,45 105,60 110,70 C115,80 135,65 145,50 Z" fill="url(#goldGrad)" opacity="0.75"/>
+                
+                <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f3e5ab" />
+                        <stop offset="50%" stop-color="#cba135" />
+                        <stop offset="100%" stop-color="#a27c1a" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="parallax-leaf leaf-bottom-left">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+                <path d="M0,200 Q80,160 100,100 Q120,80 200,50" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>
+                <path d="M0,200 C30,180 40,150 30,140 C20,130 10,150 0,200 Z" fill="url(#goldGrad)" opacity="0.8"/>
+                <path d="M35,165 C65,150 80,120 70,110 C60,100 45,125 35,165 Z" fill="url(#goldGrad)" opacity="0.7"/>
+                <path d="M70,130 C100,115 115,85 105,75 C95,65 80,90 70,130 Z" fill="url(#goldGrad)" opacity="0.8"/>
+                <path d="M20,185 C40,190 60,175 55,165 C50,155 30,170 20,185 Z" fill="url(#goldGrad)" opacity="0.75"/>
+                <path d="M55,150 C75,155 95,140 90,130 C85,120 65,135 55,150 Z" fill="url(#goldGrad)" opacity="0.75"/>
+            </svg>
+        </div>
+
+        <div class="container">
+            <!-- Header Ornament -->
+            <header class="main-header animate-on-scroll">
+                <div class="header-ornament">
+                    <svg viewBox="0 0 100 30" width="120" height="36" class="gold-svg">
+                        <path d="M10,15 C30,2 70,2 90,15" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+                        <circle cx="50" cy="15" r="5" fill="url(#goldGrad)"/>
+                        <path d="M40,15 L10,15" fill="none" stroke="url(#goldGrad)" stroke-width="0.5"/>
+                        <path d="M60,15 L90,15" fill="none" stroke="url(#goldGrad)" stroke-width="0.5"/>
+                        <path d="M50,5 L50,25" fill="none" stroke="url(#goldGrad)" stroke-width="0.5"/>
+                    </svg>
+                </div>
+                <div class="bismillah-calligraphy">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+            </header>
+
+            <!-- Card 1: Invitation Text -->
+            <section class="card invitation-card animate-on-scroll">
+                <div class="card-border"></div>
+                <div class="card-corners">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="card-content">
+                    <div class="ornament-top">
+                        <svg viewBox="0 0 100 35" width="90" height="30" class="gold-svg">
+                            <path d="M50,30 Q40,15 15,25 Q35,15 50,2 C65,15 85,15 50,30 Z" fill="url(#goldGrad)" opacity="0.9"/>
+                            <path d="M50,30 Q45,25 35,28 C42,22 46,15 50,5 C54,15 58,22 65,28 Q55,25 50,30 Z" fill="#fff" opacity="0.3"/>
+                            <circle cx="50" cy="2" r="2.5" fill="url(#goldGrad)"/>
+                            <circle cx="28" cy="18" r="1.5" fill="url(#goldGrad)"/>
+                            <circle cx="72" cy="18" r="1.5" fill="url(#goldGrad)"/>
+                        </svg>
+                    </div>
+                    
+                    <p class="announcement-title">تتشرف عائلات</p>
+                    <h3 class="family-name">المشــــــد</h3>
+                    <p class="hosts">الأستاذ <strong>عبدالخالق المشد</strong> <span class="gold-amp">&</span> الأستاذ <strong>عمرو المشد</strong></p>
+                    
+                    <p class="invite-phrase">بدعوة سيادتكم لحضور حفل عقد قران نجليهما</p>
+                    
+                    <div class="names-display">
+                        <span class="groom">محمد</span>
+                        <div class="hearts-connector">
+                            <span class="gold-heart-pulsing">&hearts;</span>
+                        </div>
+                        <span class="bride">مريم</span>
+                    </div>
+                    
+                    <p class="will-of-god">وذلك بمشيئة الله تعالى</p>
+                    
+                    <div class="separator-ornate">
+                        <svg viewBox="0 0 200 20" width="160" height="16" class="gold-svg">
+                            <path d="M10,10 C50,0 80,20 100,10 C120,0 150,20 190,10" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+                            <path d="M10,10 Q5,10 5,7 Q5,4 10,7 Q15,10 10,10 Z" fill="url(#goldGrad)"/>
+                            <path d="M190,10 Q195,10 195,7 Q195,4 190,7 Q185,10 190,10 Z" fill="url(#goldGrad)"/>
+                            <circle cx="100" cy="10" r="3.5" fill="url(#goldGrad)"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card 2: Childhood Photo inside Luxury Frame -->
+            <section class="card photo-card animate-on-scroll">
+                <div class="card-border"></div>
+                <div class="card-corners">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="card-content photo-flex">
+                    <div class="luxury-arch-container">
+                        <div class="arch-glow"></div>
+                        <div class="arch-frame">
+                            <div class="arch-inner">
+                                <img src="M&M.png" alt="محمد ومريم" class="couple-photo">
+                            </div>
+                        </div>
+                        <div class="frame-gold-border"></div>
+                    </div>
+                    <p class="photo-caption">"منذ الطفولة كبرنا معاً... واليوم يجمعنا الميثاق الغليظ"</p>
+                </div>
+            </section>
+
+            <!-- Card 3: Live Countdown -->
+            <section class="card countdown-card animate-on-scroll">
+                <div class="card-border"></div>
+                <div class="card-corners">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="card-content">
+                    <h4 class="section-title">المتبقي على حفل عقد القران</h4>
+                    <div id="countdown" class="countdown-grid">
+                        <div class="countdown-item">
+                            <div class="glass-bg"></div>
+                            <span id="days" class="countdown-num">00</span>
+                            <span class="countdown-label">يوم</span>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="glass-bg"></div>
+                            <span id="hours" class="countdown-num">00</span>
+                            <span class="countdown-label">ساعة</span>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="glass-bg"></div>
+                            <span id="minutes" class="countdown-num">00</span>
+                            <span class="countdown-label">دقيقة</span>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="glass-bg"></div>
+                            <span id="seconds" class="countdown-num">00</span>
+                            <span class="countdown-label">ثانية</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card 4: Event Details (Date, Time, Location) -->
+            <section class="card details-card animate-on-scroll">
+                <div class="card-border"></div>
+                <div class="card-corners">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="card-content">
+                    <h4 class="section-title">تفاصيل الحفل</h4>
+                    
+                    <div class="details-grid">
+                        <!-- Date -->
+                        <div class="detail-box">
+                            <div class="icon-wrap"><i class="fa-solid fa-calendar-check"></i></div>
+                            <h5>التاريخ</h5>
+                            <p class="primary-detail">الخميس</p>
+                            <p class="secondary-detail">16 يوليو 2026</p>
+                            <p class="arabic-date">الموافق 1 صفر 1448 هـ</p>
+                        </div>
+
+                        <!-- Time -->
+                        <div class="detail-box">
+                            <div class="icon-wrap"><i class="fa-solid fa-hourglass-half"></i></div>
+                            <h5>الوقت</h5>
+                            <p class="primary-detail">الرابعة عصراً</p>
+                            <p class="secondary-detail">الساعة 4:00 عصراً</p>
+                        </div>
+                    </div>
+
+                    <!-- Venue Location -->
+                    <div class="venue-box">
+                        <div class="icon-wrap"><i class="fa-solid fa-map-pin"></i></div>
+                        <h5>المكان</h5>
+                        <p class="venue-name">فندق 6 أكتوبر - الأنفوشي</p>
+                        <p class="venue-city">الإسكندرية، مصر</p>
+                        
+                        <div class="venue-actions">
+                            <a href="https://maps.app.goo.gl/hyTpmDQttMqzfawf9?g_st=ic" target="_blank" class="gold-btn venue-btn shine-effect">
+                                <i class="fa-solid fa-map-location-dot"></i> عرض على الخريطة
+                            </a>
+                            <button id="add-to-calendar-btn" class="gold-btn venue-btn outline">
+                                <i class="fa-solid fa-calendar-plus"></i> إضافة للتقويم
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Footer Supplication -->
+            <footer class="main-footer animate-on-scroll">
+                <div class="footer-divider">
+                    <svg viewBox="0 0 100 20" width="150" height="30" class="gold-svg">
+                        <path d="M10,10 Q30,20 50,10 T90,10" fill="none" stroke="url(#goldGrad)" stroke-width="1"/>
+                        <circle cx="50" cy="10" r="3" fill="url(#goldGrad)"/>
+                    </svg>
+                </div>
+                <div class="supplication">
+                    "بَارَكَ اللَّهُ لَهُمَا وَبَارَكَ عَلَيْهِمَا وَجَمَعَ بَيْنَهُمَا فِي خَيْرٍ"
+                </div>
+                
+                <div class="footer-monogram">M & M</div>
+                <p class="footer-copy">&copy; 2026 - حفل زفاف محمد ومريم. بكل حب.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Confetti Overlay Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- App Script -->
+    <script src="script.js"></script>
+</body>
+</html>
