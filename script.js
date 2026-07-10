@@ -69,6 +69,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    let wasPlayingBeforeHide = false;
+
+    // Pause music when the user navigates away, switches tabs, or minimizes browser
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            if (!music.paused) {
+                music.pause();
+                musicToggleBtn.classList.remove("playing");
+                wasPlayingBeforeHide = true;
+            } else {
+                wasPlayingBeforeHide = false;
+            }
+        } else {
+            // Auto-resume only if it was active and the invitation was already opened
+            if (wasPlayingBeforeHide && mainContent.classList.contains("fade-in")) {
+                music.play()
+                    .then(() => {
+                        musicToggleBtn.classList.add("playing");
+                    })
+                    .catch((err) => console.log("Failed to resume music:", err));
+            }
+        }
+    });
+
     // ==========================================
     // 2. Interactive Parallax Mouse Drift
     // ==========================================
