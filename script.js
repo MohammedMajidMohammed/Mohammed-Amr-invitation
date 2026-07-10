@@ -302,8 +302,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     addToCalendarBtn.addEventListener("click", () => {
         const title = encodeURIComponent("عقد قران محمد ومريم");
-        const details = encodeURIComponent("نتشرف بدعوتكم لحضور حفل عقد قران محمد ومريم بفندق 6 أكتوبر بالأنفوشي الإسكندرية.");
-        const location = encodeURIComponent("فندق 6 أكتوبر - الأنفوشي، الإسكندرية");
+        const details = encodeURIComponent("نتشرف بدعوتكم لحضور حفل عقد قران محمد ومريم بقاعة Diamond Castle الإسكندرية.");
+        const location = encodeURIComponent("قاعة Diamond Castle، الإسكندرية");
         
         const startDate = "20260716T130000Z";
         const endDate = "20260716T160000Z";
@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 🗓️ يوم الخميس الموافق ١٦ يوليو ٢٠٢٦
 ⏰ الساعة الرابعة عصراً
-📍 فندق 6 أكتوبر الأنفوشي - الإسكندرية
+📍 قاعة Diamond Castle - الإسكندرية
 
 حضوركم يتم فرحتنا ويسعد قلوبنا، لمزيد من التفاصيل يرجى زيارة الرابط التالي:
 🔗 ${window.location.href}`
