@@ -71,27 +71,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let wasPlayingBeforeHide = false;
 
-    // Pause music when the user navigates away, switches tabs, or minimizes browser
+    function handleAudioPause() {
+        if (!music.paused) {
+            music.pause();
+            musicToggleBtn.classList.remove("playing");
+            wasPlayingBeforeHide = true;
+        }
+    }
+
+    function handleAudioPlay() {
+        if (wasPlayingBeforeHide && mainContent.classList.contains("fade-in")) {
+            music.play()
+                .then(() => {
+                    musicToggleBtn.classList.add("playing");
+                })
+                .catch((err) => console.log("Failed to auto-resume music:", err));
+        }
+    }
+
+    // Intelligently pause and play music on tab switch, lock, or app minimize (iOS/Android Safari robust solution)
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            if (!music.paused) {
-                music.pause();
-                musicToggleBtn.classList.remove("playing");
-                wasPlayingBeforeHide = true;
-            } else {
-                wasPlayingBeforeHide = false;
-            }
+            handleAudioPause();
         } else {
-            // Auto-resume only if it was active and the invitation was already opened
-            if (wasPlayingBeforeHide && mainContent.classList.contains("fade-in")) {
-                music.play()
-                    .then(() => {
-                        musicToggleBtn.classList.add("playing");
-                    })
-                    .catch((err) => console.log("Failed to resume music:", err));
-            }
+            handleAudioPlay();
         }
     });
+
+    window.addEventListener("pagehide", handleAudioPause);
+    window.addEventListener("blur", handleAudioPause);
+    window.addEventListener("focus", handleAudioPlay);
 
     // ==========================================
     // 2. Interactive Parallax Mouse Drift

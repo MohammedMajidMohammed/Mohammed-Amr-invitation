@@ -1622,14 +1622,23 @@ body {
 
     .countdown-grid {
         gap: 8px;
+        justify-content: center;
+    }
+    
+    .countdown-item {
+        width: 68px !important;
+        height: 68px !important;
+        padding: 8px 2px !important;
+        border-width: 1.5px !important;
     }
     
     .countdown-num {
-        font-size: 1.7rem;
+        font-size: 1.35rem !important;
     }
     
     .countdown-label {
-        font-size: 0.85rem;
+        font-size: 0.65rem !important;
+        margin-top: 1px !important;
     }
 
     .details-grid {
